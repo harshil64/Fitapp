@@ -1,0 +1,20 @@
+<section class="newtraining" fxLayout fxLayoutAlign="center">
+    <form (ngSubmit)="onStartTraining(f)" #f="ngForm">
+        <mat-card fxFlex="400px" fxFlex.xs="100%">
+            <mat-card-title fxLayoutAlign="center">Time to start a workout!</mat-card-title>
+            <mat-form-field appearance="fill" fxLayoutAlign="center" *ngIf="!isLoading && exercises">
+                <!-- <mat-label>Choose Exercise</mat-label> -->
+                <mat-select placeholder="Choose Exercise" ngModel name="exercise" required>
+                    <mat-option *ngFor="let exercise of exercises" [value]="exercise.id">{{exercise.name}}</mat-option>
+                    <!-- <mat-option value="burpees">Burpees</mat-option> -->
+                    <!-- <mat-option value="touch-toes">Touch toes</mat-option> This was changed to above single loop -->
+                </mat-select>
+            </mat-form-field>
+            <mat-spinner *ngIf="isLoading"></mat-spinner>
+            <mat-card-actions fxLayoutAlign="center" *ngIf="!isLoading">
+                <button *ngIf="exercises" type="submit" [disabled]="f.invalid" mat-button>Start</button>
+                <button *ngIf="!exercises" type="button" (click)="fetchExercises()" mat-button>Fetch Again</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</section>

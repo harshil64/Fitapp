@@ -1,0 +1,21 @@
+<mat-nav-list>
+    <a *ngIf="!isAuth" mat-list-item routerLink="/signup" (click)="onClose()">
+        <mat-icon>face</mat-icon>
+        <span class="nav-caption">Signup</span>
+    </a>
+    <a *ngIf="!isAuth" mat-list-item routerLink="/login" (click)="onClose()">
+        <mat-icon>input</mat-icon>
+        <span class="nav-caption">Login</span>
+    </a>
+    <a mat-list-item *ngIf="isAuth" routerLink="/training" (click)="onClose()">
+        <mat-icon>fitness_center</mat-icon>
+        <span class="nav-caption">Training</span>
+    </a>
+    <mat-list-item>
+        <button mat-icon-button *ngIf="isAuth" (click)="onLogout()"> <!--isAuth doesnt shows Logout and Training even after login but works if ! applied-->
+            <mat-icon>eject</mat-icon>
+            <span class="nav-caption">Logout</span>
+        </button>
+    </mat-list-item>
+
+</mat-nav-list>
